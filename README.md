@@ -9,6 +9,14 @@ Project Overview:
 
 Agriculture is the backbone of our economy, but many farmers face challenges due to the lack of timely and accurate information. Issues such as incorrect crop choices, undetected pest infestations, and unpredictable weather patterns impact crop yields and farmers' livelihoods. Our AI-Powered Agricultural Advisory System aims to solve these challenges by using advanced technology to provide farmers with actionable insights and recommendations.
 
+Datasets Used:
+--------------
+https://www.kaggle.com/datasets/arjuntejaswi/plant-village
+
+Sentinel2_SR_Export.tif:
+--------------------------
+
+https://drive.google.com/file/d/1BU98e18IIfBkM4ooJJRhe484O9OxrOlH/view?usp=sharing
 
 Purpose:
 ---------------
