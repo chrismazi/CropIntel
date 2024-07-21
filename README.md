@@ -20,7 +20,7 @@ https://drive.google.com/file/d/1BU98e18IIfBkM4ooJJRhe484O9OxrOlH/view?usp=shari
 
 Purpose:
 ---------------
-The purpose of this repository is to develop an AI-powered system that assists farmers by providing:
+The purpose of this repository is to develop an AI-powered system that assists farmers by providing an efficient and accurate solution for their plant. Given the limited time and the complexity of the tasks, our team of five divided the work among three active members to ensure timely delivery. Despite the challenges, we successfully implemented key features, focusing on pest and plant disease detection. others are as follow:
 
 Crop Recommendations:
 --------------------------
