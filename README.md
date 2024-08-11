@@ -1,7 +1,7 @@
 # A2SV-Hackathon
-AI-Powered Agricultural Advisory System: Use of  advanced AI and machine learning techniques to provide farmers with actionable insights and recommendations. The system offers crop recommendations, early pest and disease detection, and weather-based planning through a user-friendly mobile and web application.
+AI-Powered Agricultural Advisory System
 
-
+Welcome to CropIntel  GitHub repository! This repository contains the source code and development history of our AI-Powered Agricultural Advisory System, a platform designed to provide farmers with actionable insights and recommendations. The system offers crop recommendations, early pest and disease detection, and weather-based planning through a user-friendly mobile and web application.
 AI-Powered Agricultural Advisory System
 
 Project Overview:
@@ -17,15 +17,6 @@ Crop-Recommendation/: This directory contains the crop recommendation models and
 Weather/: This directory includes the weather prediction and analysis tools, helping farmers plan their activities based on accurate weather forecasts. The tools are implemented using HTML, CSS, JavaScript, and other web technologies.
 
 Disease_Classification.ipynb: This file contains the notebook used for training and testing models that detect and classify plant diseases, helping farmers take preventive measures to protect their crops.
-
-Datasets we are using for the Plant disease
---------------------------------------------
-https://www.kaggle.com/datasets/arjuntejaswi/plant-village
-
-Sentinel2_SR_Export.tif:
---------------------------
-
-https://drive.google.com/file/d/1BU98e18IIfBkM4ooJJRhe484O9OxrOlH/view?usp=sharing
 
 Purpose:
 ---------------
