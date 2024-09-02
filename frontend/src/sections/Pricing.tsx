@@ -1,8 +1,9 @@
 import CheckIcon from '@/assets/check.svg';
-import {twMerge} from 'tailwind-merge';
+import { twMerge } from 'tailwind-merge';
 
 const pricingTiers = [
   {
+    id: 'free', // Add unique id
     title: "Free",
     monthlyPrice: 0,
     buttonText: "Get started for free",
@@ -16,6 +17,7 @@ const pricingTiers = [
     ],
   },
   {
+    id: 'premium', // Add unique id
     title: "Premium Plan",
     monthlyPrice: 200,
     buttonText: "Sign up now",
@@ -31,6 +33,7 @@ const pricingTiers = [
     ],
   },
   {
+    id: 'enterprise', // Add unique id
     title: "Enterprise Plan",
     monthlyPrice: "custom",
     buttonText: "Sign up now",
@@ -50,55 +53,44 @@ const pricingTiers = [
 
 export const Pricing = () => {
   return (
-   <section className="py-24 bg-white">
-     <div className="container">
-      <div className='section-heading'>
-       <h2 className="section-title">Pricing</h2>
-       <p className="section-description mt-5">
-        Free , Upgrade for unlimited tasks, better security, and exclusive features.
-        </p>
+    <section className="py-24 bg-white">
+      <div className="container">
+        <div className='section-heading'>
+          <h2 className="section-title">Pricing</h2>
+          <p className="section-description mt-5">
+            Free, Upgrade for unlimited tasks, better security, and exclusive features.
+          </p>
         </div>
         <div className='flex flex-col gap-6 items-center mt-10 lg:flex-row lg:items-end lg:justify-center'>
-          {pricingTiers.map(
-           ({
-             title,
-             monthlyPrice,
-             buttonText, 
-             popular, 
-             inverse,
-             features,
-           }) => (
-             <div className={twMerge('card',inverse === true && 'border-black bg-black text-white')}>
+          {pricingTiers.map(({ id, title, monthlyPrice, buttonText, popular, inverse, features }) => (
+            <div key={id} className={twMerge('card', inverse === true && 'border-black bg-black text-white')}>
               <div className='flex justify-between'>
-               <h3 className={twMerge('text-lg font-bold text-black/50', inverse === true && "text-white/60")}>{title}</h3>
-               {popular === true && (
-                <div className='inline-flex text-sm px-4 py-1.5 rounded-xl border border-white/20'>
-                <span className='bg-[linear-gradient(to_right,#DD7DDF,#E1CD86,#BBCB92,#71C2EF,#3BFFFF,#DD7DDF)] text-transparent bg-clip-text font-medium'>Popular</span>
+                <h3 className={twMerge('text-lg font-bold text-black/50', inverse === true && "text-white/60")}>{title}</h3>
+                {popular === true && (
+                  <div className='inline-flex text-sm px-4 py-1.5 rounded-xl border border-white/20'>
+                    <span className='bg-[linear-gradient(to_right,#DD7DDF,#E1CD86,#BBCB92,#71C2EF,#3BFFFF,#DD7DDF)] text-transparent bg-clip-text font-medium'>Popular</span>
+                  </div>
+                )}
               </div>
-               )}
-               
-               </div>
-               <div className='flex items-baseline gap-1 mt-[30px]'>
+              <div className='flex items-baseline gap-1 mt-[30px]'>
                 <span className='text-4xl font-bold tracking-tighter leading-none'>${monthlyPrice}</span>
                 <span className='tracking-tight font-bold text-black/50'>/year</span>
-               </div>
-               <button className='btn btn-primary w-full mt-[30px]'>
+              </div>
+              <button className='btn btn-primary w-full mt-[30px]'>
                 {buttonText}
-                </button>
-               <ul className='flex flex-col gap-5 mt-8'>
-                {features.map(feature => (
-                  <li className='text-sm flex items-center gap-4'>
+              </button>
+              <ul className='flex flex-col gap-5 mt-8'>
+                {features.map((feature, featureIndex) => (
+                  <li key={featureIndex} className='text-sm flex items-center gap-4'>
                     <CheckIcon className="h-6 w-6"/>
                     <span>{feature}</span>
                   </li>
                 ))}
-               </ul>
-              </div>
-           )
-          )}
-        
+              </ul>
+            </div>
+          ))}
         </div>
-      </div>   
+      </div>
     </section>
   );
 };
