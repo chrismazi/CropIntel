@@ -25,7 +25,8 @@ export default function NavMenu() {
         "weather": {
             Icon: '/images/menu-icons/weather.svg',
             text: "Weather",
-            url: '/weather'
+            url: 'https://weather-cropintel.vercel.app/',
+            external:true
         },
         "crops": {
             Icon: '/images/menu-icons/crops.svg',
