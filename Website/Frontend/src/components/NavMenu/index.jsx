@@ -20,7 +20,8 @@ export default function NavMenu() {
         "soil": {
             Icon: '/images/menu-icons/moisture.svg',
             text: "Soil",
-            url: '/soil'
+            url: 'https://soilgrids.org/',
+            external:true
         },
         "weather": {
             Icon: '/images/menu-icons/weather.svg',
