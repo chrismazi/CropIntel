@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CropIntel AI - Agricultural Advisory System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .feature-card h3 {
+            color: #4a5568;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .feature-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+            font-weight: 600;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .demo-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .demo-section h2 {
+            color: #4a5568;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .api-demo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .demo-input {
+            background: #f7fafc;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .demo-output {
+            background: #edf2f7;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #4a5568;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .btn-demo {
+            background: #48bb78;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+        
+        .btn-demo:hover {
+            background: #38a169;
+        }
+        
+        .btn-demo:disabled {
+            background: #a0aec0;
+            cursor: not-allowed;
+        }
+        
+        .result {
+            background: #f0fff4;
+            border: 1px solid #9ae6b4;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 15px;
+            white-space: pre-wrap;
+        }
+        
+        .error {
+            background: #fed7d7;
+            border: 1px solid #fc8181;
+            color: #c53030;
+        }
+        
+        .loading {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .api-demo {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌾 CropIntel AI</h1>
+            <p>AI-Powered Agricultural Advisory System</p>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <span class="icon">🌱</span>
+                <h3>Crop Recommendation</h3>
+                <p>Get AI-powered crop recommendations based on soil conditions, climate data, and previous crops.</p>
+                <a href="#crop-demo" class="btn">Try Demo</a>
+            </div>
+            
+            <div class="feature-card">
+                <span class="icon">🔬</span>
+                <h3>Disease Detection</h3>
+                <p>Upload plant images to detect diseases and get instant treatment recommendations.</p>
+                <a href="#disease-demo" class="btn">Try Demo</a>
+            </div>
+            
+            <div class="feature-card">
+                <span class="icon">🤖</span>
+                <h3>AI Agricultural Assistant</h3>
+                <p>Chat with AgriBot for expert agricultural advice and farming guidance.</p>
+                <a href="#chat-demo" class="btn">Try Demo</a>
+            </div>
+        </div>
+        
+        <!-- Crop Recommendation Demo -->
+        <div class="demo-section" id="crop-demo">
+            <h2>🌱 Crop Recommendation Demo</h2>
+            <div class="api-demo">
+                <div class="demo-input">
+                    <h4>Enter Soil & Climate Data</h4>
+                    <form id="cropForm">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+                            <div class="form-group">
+                                <label>Nitrogen (N)</label>
+                                <input type="number" id="nitrogen" value="90" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phosphorus (P)</label>
+                                <input type="number" id="phosphorus" value="42" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Potassium (K)</label>
+                                <input type="number" id="potassium" value="43" required>
+                            </div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                            <div class="form-group">
+                                <label>Temperature (°C)</label>
+                                <input type="number" step="0.1" id="temperature" value="20.87" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Humidity (%)</label>
+                                <input type="number" step="0.1" id="humidity" value="82.0" required>
+                            </div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                            <div class="form-group">
+                                <label>pH Level</label>
+                                <input type="number" step="0.1" id="ph" value="6.5" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Rainfall (mm)</label>
+                                <input type="number" step="0.1" id="rainfall" value="202.9" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Previous Crop</label>
+                            <input type="text" id="previousCrop" value="wheat" required>
+                        </div>
+                        <button type="submit" class="btn-demo" id="cropBtn">Get Recommendation</button>
+                    </form>
+                </div>
+                <div class="demo-output">
+                    <h4>AI Recommendation</h4>
+                    <div id="cropResult" class="result" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Disease Detection Demo -->
+        <div class="demo-section" id="disease-demo">
+            <h2>🔬 Plant Disease Detection Demo</h2>
+            <div class="api-demo">
+                <div class="demo-input">
+                    <h4>Upload Plant Image</h4>
+                    <form id="diseaseForm">
+                        <div class="form-group">
+                            <label>Select Plant Image</label>
+                            <input type="file" id="plantImage" accept="image/*" required>
+                        </div>
+                        <button type="submit" class="btn-demo" id="diseaseBtn">Detect Disease</button>
+                    </form>
+                    <div style="margin-top: 15px; font-size: 12px; color: #666;">
+                        <strong>Note:</strong> Upload clear images of plant leaves, fruits, or stems showing any symptoms.
+                    </div>
+                </div>
+                <div class="demo-output">
+                    <h4>Detection Results</h4>
+                    <div id="diseaseResult" class="result" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Chat Demo -->
+        <div class="demo-section" id="chat-demo">
+            <h2>🤖 AgriBot Chat Demo</h2>
+            <div class="api-demo">
+                <div class="demo-input">
+                    <h4>Ask AgriBot</h4>
+                    <form id="chatForm">
+                        <div class="form-group">
+                            <label>Your Question</label>
+                            <textarea id="chatInput" placeholder="Ask about crops, diseases, fertilizers, weather, etc.">What is the best fertilizer for tomatoes?</textarea>
+                        </div>
+                        <button type="submit" class="btn-demo" id="chatBtn">Ask AgriBot</button>
+                    </form>
+                </div>
+                <div class="demo-output">
+                    <h4>AgriBot Response</h4>
+                    <div id="chatResult" class="result" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const API_BASE = 'http://localhost:8000';
+        
+        // Crop Recommendation
+        document.getElementById('cropForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('cropBtn');
+            const result = document.getElementById('cropResult');
+            
+            btn.disabled = true;
+            btn.textContent = 'Analyzing...';
+            result.style.display = 'block';
+            result.className = 'result loading';
+            result.textContent = 'Analyzing soil and climate data...';
+            
+            try {
+                const formData = {
+                    N: parseFloat(document.getElementById('nitrogen').value),
+                    P: parseFloat(document.getElementById('phosphorus').value),
+                    K: parseFloat(document.getElementById('potassium').value),
+                    temperature: parseFloat(document.getElementById('temperature').value),
+                    humidity: parseFloat(document.getElementById('humidity').value),
+                    ph: parseFloat(document.getElementById('ph').value),
+                    rainfall: parseFloat(document.getElementById('rainfall').value)
+                };
+                
+                const previousCrop = document.getElementById('previousCrop').value;
+                
+                const response = await fetch(`${API_BASE}/crop/recommend?previous_crop=${previousCrop}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    result.className = 'result';
+                    result.textContent = `Recommended Crop: ${data.recommended_crop}\n\nAI Analysis:\n${data.llm_report}`;
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                result.className = 'result error';
+                result.textContent = `Error: ${error.message}. Make sure the backend server is running.`;
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Get Recommendation';
+            }
+        });
+        
+        // Disease Detection
+        document.getElementById('diseaseForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('diseaseBtn');
+            const result = document.getElementById('diseaseResult');
+            const fileInput = document.getElementById('plantImage');
+            
+            if (!fileInput.files[0]) {
+                alert('Please select an image file');
+                return;
+            }
+            
+            btn.disabled = true;
+            btn.textContent = 'Analyzing...';
+            result.style.display = 'block';
+            result.className = 'result loading';
+            result.textContent = 'Analyzing plant image...';
+            
+            try {
+                const formData = new FormData();
+                formData.append('file', fileInput.files[0]);
+                
+                const response = await fetch(`${API_BASE}/api/v1/pest_disease/predict`, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    const confidence = (data.confidence * 100).toFixed(1);
+                    const className = data.class_name.replace(/_/g, ' ').replace(/___/g, ' - ');
+                    const isHealthy = data.class_name.toLowerCase().includes('healthy');
+                    
+                    result.className = 'result';
+                    result.textContent = `Detection Result: ${className}\nConfidence: ${confidence}%\n\n${isHealthy ? '✅ Plant appears healthy!' : '⚠️ Disease detected - consider treatment options.'}`;
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                result.className = 'result error';
+                result.textContent = `Error: ${error.message}. Make sure the backend server is running.`;
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Detect Disease';
+            }
+        });
+        
+        // Chat
+        document.getElementById('chatForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('chatBtn');
+            const result = document.getElementById('chatResult');
+            const input = document.getElementById('chatInput');
+            
+            if (!input.value.trim()) {
+                alert('Please enter a question');
+                return;
+            }
+            
+            btn.disabled = true;
+            btn.textContent = 'Asking...';
+            result.style.display = 'block';
+            result.className = 'result loading';
+            result.textContent = 'AgriBot is thinking...';
+            
+            try {
+                const response = await fetch(`${API_BASE}/llm-chat/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userInput: input.value })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    result.className = 'result';
+                    result.textContent = `AgriBot: ${data.response}`;
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                result.className = 'result error';
+                result.textContent = `Error: ${error.message}. Make sure the backend server is running.`;
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Ask AgriBot';
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

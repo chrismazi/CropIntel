@@ -43,7 +43,7 @@ def get_llm_report(previous_crop: str, recommended_crop: str, input_data: dict) 
 
     # Handle the LLM response
     if response.status_code == 200:
-        llm_result = response.json()["generated_text"]
+        llm_result = response.json().get("response") or response.json().get("generated_text", "No response from LLM")
         return llm_result
     else:
         raise Exception(f"Error from LLM service: {response.status_code} - {response.text}")

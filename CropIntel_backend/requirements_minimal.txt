@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+sqlalchemy
+python-dotenv
+python-jose
+passlib
+python-multipart
+pydantic
+requests
+google-generativeai
+joblib
+pandas
+scikit-learn
+pillow
+tensorflow

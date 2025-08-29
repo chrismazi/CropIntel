@@ -1,0 +1,6 @@
+from fastapi import APIRouter
+
+router = APIRouter()
+
+# Field management endpoints will be implemented here
+# For now, this is a placeholder to prevent import errors

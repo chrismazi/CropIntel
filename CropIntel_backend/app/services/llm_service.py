@@ -9,7 +9,7 @@ import google.generativeai as genai
 load_dotenv()
 
 API_KEY = os.getenv("API_KEY")
-MODEL_NAME = "gemini-pro"
+MODEL_NAME = "gemini-1.5-flash"
 
 # Configure the library
 configure(api_key=API_KEY)
